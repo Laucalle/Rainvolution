@@ -1,17 +1,14 @@
 using UnityEngine;
 using System.Collections;
 
-public class NewMonoBehaviour : MonoBehaviour
+public class PowerUp : MonoBehaviour
 {
-	// Use this for initialization
-	void Start()
-	{
-
-	}
-
-	// Update is called once per frame
-	void Update()
-	{
-			
-	}
+    public int Id;
+    public string name;
+    public string descr;
+    public float produce_rate;
+    public int[] multiplier;
+    // Add Icon later
+    public float cost;
+    public bool is_generator = false;
 }
