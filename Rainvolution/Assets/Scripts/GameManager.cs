@@ -5,26 +5,42 @@ using UnityEngine.UI;
 
 
 public class GameManager : MonoBehaviour {
-    public float rain_percentage;
+
+    [Header("Rain Variables")]
+    public float water;
     public float rain_max;
     public float danger_zone;
     public float dryness_rate;
     public float water_rate;
-	
+
+    [Header("Game values")]
+    public float O2;
+
+    public Text h2o;
+    public Text o2;
+
 	// Update is called once per frame
 	void Update () {
-        Debug.Log(rain_percentage+" - " +dryness_rate * Time.deltaTime);
-        rain_percentage = rain_percentage - dryness_rate * Time.deltaTime;
-        if (rain_percentage >= rain_max)
+        Debug.Log(water+" - "+dryness_rate * Time.deltaTime);
+        water = water - dryness_rate * Time.deltaTime;
+        if (water >= rain_max)
         {
             Debug.Log("You died. Too much");
         }
-        else if (rain_percentage <= 0) {
+        else if (water <= 0) {
             Debug.Log("You died. Too little");
         }
+
+        h2o.text = "H2O -> " + water.ToString();
+        o2.text = "O2 -> " + O2.ToString();
+
 	}
     public void Rain() {
-        rain_percentage += water_rate;
+        water += water_rate;
+    }
 
+    public void setValues (float consume_rate, float produce_rate) {
+        water -= consume_rate;
+        O2 += produce_rate;
     }
 }
