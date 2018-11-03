@@ -21,9 +21,9 @@ public class ShopManager : MonoBehaviour
             {
                 generator_manager.number_of_gen[g.GetComponent<Generator>().Id] += 1;
                 game.Pay(g.GetComponent<Generator>().cost, true);
-                if (generator_manager.number_of_gen[g.GetComponent<PowerUp>().Id] % 10 == 0)
+                if (generator_manager.number_of_gen[g.GetComponent<Generator>().Id] % 10 == 0)
                 {
-                    generator_manager.generators[g.GetComponent<PowerUp>().Id].cost *= 2;
+                    generator_manager.generators[g.GetComponent<Generator>().Id].cost *= 2;
                 }
             }
         }
