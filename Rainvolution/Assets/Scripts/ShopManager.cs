@@ -20,25 +20,12 @@ public class ShopManager : MonoBehaviour
             if (game.water > g.GetComponent<Generator>().cost)
             {
                 generator_manager.number_of_gen[g.GetComponent<Generator>().Id] += 1;
-                game.Pay(g.GetComponent<Generator>().cost, true);
+                game.Pay(g.GetComponent<Generator>().cost);
                 if (generator_manager.number_of_gen[g.GetComponent<Generator>().Id] % 10 == 0)
                 {
                     generator_manager.generators[g.GetComponent<Generator>().Id].cost *= 2;
                 }
             }
         }
-        else if (g.GetComponent<PowerUp>() != null) {
-            if (game.O2 > g.GetComponent<PowerUp>().cost)
-            {
-                generator_manager.number_of_pow[g.GetComponent<PowerUp>().Id] += 1;
-                game.Pay(g.GetComponent<PowerUp>().cost, false);
-                if (generator_manager.number_of_pow[g.GetComponent<PowerUp>().Id] % 10 == 0)
-                {
-                    generator_manager.power_ups[g.GetComponent<PowerUp>().Id].cost *= 2;
-                }
-                    
-            }
-        }
-        
     }
 }

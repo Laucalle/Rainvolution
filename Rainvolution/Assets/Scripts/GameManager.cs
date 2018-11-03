@@ -15,7 +15,9 @@ public class GameManager : MonoBehaviour {
 
     [Header("Game values")]
     public float O2;
+    public float life;
 
+    public Text life_text;
     public Text h2o;
     public Text o2;
 
@@ -23,6 +25,13 @@ public class GameManager : MonoBehaviour {
 	void Update () {
         //Debug.Log(water+" - "+dryness_rate * Time.deltaTime);
         water = water - dryness_rate * Time.deltaTime;
+
+
+        // Fit this operation with the time
+        life = (water + O2) / 2;
+
+
+
         //if (water >= rain_max)
         //{
         //    Debug.Log("You died. Too much");
@@ -31,6 +40,7 @@ public class GameManager : MonoBehaviour {
         //    Debug.Log("You died. Too little");
         //}
 
+        life_text.text = "life -> " + life.ToString();
         h2o.text = "H2O -> " + water.ToString();
         o2.text = "O2 -> " + O2.ToString();
 
@@ -44,14 +54,7 @@ public class GameManager : MonoBehaviour {
         O2 += produce_rate;
     }
 
-    public void setValuesPowerUp (float consume_rate, float produce_rate) {
-        water += consume_rate;
-    }
-
-    public void Pay (float value, bool h2o) {
-        if (h2o)
-            water -= value;
-        else
-            O2 -= value;
+    public void Pay (float value) {
+        water -= value;
     }
 }

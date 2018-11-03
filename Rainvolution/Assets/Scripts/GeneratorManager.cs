@@ -8,9 +8,6 @@ public class GeneratorManager : MonoBehaviour
     public Generator[] generators;
     public int[] number_of_gen;
 
-    public PowerUp[] power_ups;
-    public int[] number_of_pow;
-
     private GameManager game;
     private int counter;
 
@@ -39,11 +36,6 @@ public class GeneratorManager : MonoBehaviour
             produce += (float) number_of_gen[i] * generators[i].produce_rate * Time.deltaTime;
         }
 
-        // For PowerUps
-        for (int i = 0; i < power_ups.Length; i++) {
-            consume -= (float)number_of_pow[i] * power_ups[i].produce_rate * Time.deltaTime;
-        }
-
         game.setValuesGenerator(consume, produce);
         CheckForNewPowers();
 
@@ -55,23 +47,56 @@ public class GeneratorManager : MonoBehaviour
         for (int i = 0; i < number_of_gen.Length; i++) {
             total_powers += number_of_gen[i];
         }
-        for (int i = 0; i < number_of_pow.Length; i++) {
-            total_powers += number_of_pow[i];
-        }
 
-        switch (total_powers) {
+        //switch (total_powers) {
 
             // Unlock PowerUp1
-            case 10:
-                panel.GetComponent<Button>().transform.Find("PowerUp" + counter).gameObject.SetActive(true);
-                // When power up set active to true, update counter +1
-                counter++;
-                break;
+            //case 10:
+            //    panel.transform.Find("PowerUp1").gameObject.SetActive(true);
+            //    // When power up set active to true, update counter +1
+            //    break;
 
-            // Unlock Generator2
-            case 25:
-                break;
-        }
+            //// Unlock Generator2
+            //case 25:
+            //    panel.transform.Find("Generator2").gameObject.SetActive(true);
+            //    break;
+
+            //case 50:
+                //panel.transform.Find("PowerUp2").gameObject.SetActive(true);
+                //break;
+
+            //case 100:
+            //    panel.transform.Find("Generator3").gameObject.SetActive(true);
+            //    break;
+
+            //case 200:
+            //    panel.transform.Find("PowerUp3").gameObject.SetActive(true);
+            //    break;
+
+            //case 400:
+            //    panel.transform.Find("Generator4").gameObject.SetActive(true);
+            //    break;
+
+            //case 1000:
+            //    panel.transform.Find("PowerUp4").gameObject.SetActive(true);
+            //    break;
+
+            //case 2000:
+            //    panel.transform.Find("Generator5").gameObject.SetActive(true);
+            //    break;
+
+            //case 5000:
+            //    panel.transform.Find("PowerUp5").gameObject.SetActive(true);
+            //    break;
+
+            //case 10000:
+            //    panel.transform.Find("Generator6").gameObject.SetActive(true);
+            //    break;
+
+            //case 20000:
+                //panel.transform.Find("PowerUp6").gameObject.SetActive(true);
+                //break;
+        //}
     }
 
 
