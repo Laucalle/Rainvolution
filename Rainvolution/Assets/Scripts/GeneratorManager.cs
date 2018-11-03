@@ -11,7 +11,6 @@ public class GeneratorManager : MonoBehaviour
     private GameManager game;
     private int counter;
 
-    public GameObject panel;
     public Text console;
 
 
@@ -44,7 +43,8 @@ public class GeneratorManager : MonoBehaviour
     void CheckForNewPowers () {
         int total_powers = 0;
 
-        for (int i = 0; i < number_of_gen.Length; i++) {
+        for (int i = 0; i < number_of_gen.Length; i++)
+        {
             total_powers += number_of_gen[i];
         }
 

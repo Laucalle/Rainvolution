@@ -51,8 +51,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a8b48f1e790542ff94b779fc7a88c63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Id: 0
   name: Alga
   descr: jsdajbkjabcjkab
   consume_rate: 3
-  produce_rate: 4
-  cost: 1
+  produce_rate: 1.5
+  multiplier: 
+  cost: 24
+  is_generator: 1

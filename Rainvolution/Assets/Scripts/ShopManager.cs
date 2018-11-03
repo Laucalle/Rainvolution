@@ -21,10 +21,14 @@ public class ShopManager : MonoBehaviour
             {
                 generator_manager.number_of_gen[g.GetComponent<Generator>().Id] += 1;
                 game.Pay(g.GetComponent<Generator>().cost);
+                // Update
                 if (generator_manager.number_of_gen[g.GetComponent<Generator>().Id] % 10 == 0)
                 {
-                    generator_manager.generators[g.GetComponent<Generator>().Id].cost *= 2;
+                    generator_manager.generators[g.GetComponent<Generator>().Id].cost *= 1.2f;
                 }
+                if (generator_manager.number_of_gen[g.GetComponent<Generator>().Id] % 5 == 0)
+                    game.water_rate += 2.5f;
+                        
             }
         }
     }

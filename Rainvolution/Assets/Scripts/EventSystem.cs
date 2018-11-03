@@ -9,6 +9,8 @@ public class EventSystem : MonoBehaviour {
     private GeneratorManager generator;
     private ShopManager shop;
 
+    public Text console;
+
 	// Use this for initialization
 	void Start () {
         game = gameObject.GetComponent<GameManager>();
@@ -23,6 +25,11 @@ public class EventSystem : MonoBehaviour {
 	}
 
     void CheckingForEvents() {
-        
+
+        // Code of diferents events
+
+        // First Event
+
+
     }
 }

@@ -16,33 +16,72 @@ public class GameManager : MonoBehaviour {
     [Header("Game values")]
     public float O2;
     public float life;
+    public float vegetals;
+    public float animals;
+
+    private float vegetals_rate;
+    private float animals_rate;
+    private float general_life = 1.0f;
+
 
     public Text life_text;
     public Text h2o;
     public Text o2;
+    public Text animals_text;
+    public Text vegetals_text;
+
+	void Start()
+	{
+        vegetals_rate = 1.0f;
+        animals_rate = 1.2f;
+	}
 
 	// Update is called once per frame
 	void Update () {
+
+        if (O2 > 100.0f)
+            animals_rate += (0.5f * Time.deltaTime);
+
         //Debug.Log(water+" - "+dryness_rate * Time.deltaTime);
-        water = water - dryness_rate * Time.deltaTime;
+        //water = water - dryness_rate * Time.deltaTime;
 
+        water = water - (vegetals_rate * Time.deltaTime * dryness_rate);
 
-        // Fit this operation with the time
+        O2 = O2 - (animals_rate * Time.deltaTime);
+
         life = (water + O2) / 2;
 
+        if (life <= 0.0f)
+            life = 0.0f;
 
+        if (life > 100.0f)
+        {
+            life = 100.0f;
+            addVitality();
+        }
+        else {
+            addVitality();
+        }
 
-        //if (water >= rain_max)
-        //{
-        //    Debug.Log("You died. Too much");
-        //}
-        //else if (water <= 0) {
-        //    Debug.Log("You died. Too little");
-        //}
+        if (O2 <= 0.0f)
+            O2 = 0.0f;
+
+        if (O2 > 120.0f)
+            O2 = 120.0f;
+
+        if (water <= 0.0f)
+            water = 0.0f;
+
+        if (water > 120.0f)
+            water = 120.0f;
+
 
         life_text.text = "life -> " + life.ToString();
         h2o.text = "H2O -> " + water.ToString();
         o2.text = "O2 -> " + O2.ToString();
+
+        animals_text.text = "Animals -> " + animals.ToString();
+        vegetals_text.text = "Vegetals -> " + vegetals.ToString();
 
 	}
     public void Rain() {
@@ -56,5 +95,81 @@ public class GameManager : MonoBehaviour {
 
     public void Pay (float value) {
         water -= value;
+    }
+
+    public void addVitality() {
+
+        float v_rate = water * Time.deltaTime * vegetals_rate;
+        float a_rate = O2 * Time.deltaTime * animals_rate; 
+
+        if (life >= 30.0f && life <= 35.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 35.0f && life <= 40.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 40.0f && life <= 45.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 45.0f && life <= 50.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 50.0f && life <= 55.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 55.0f && life <= 60.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 60.0f && life <= 65.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 65.0f && life <= 70.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 70.0f && life <= 75.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 75.0f && life <= 80.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 80.0f && life <= 85.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 85.0f && life <= 90.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life > 90.0f && life <= 100.0f)
+        {
+            animals += (1.5f * a_rate)* Time.deltaTime;
+            vegetals += v_rate* Time.deltaTime;
+        }
+        else if (life < 30.0f) {
+            animals -= (1.5f * a_rate)* Time.deltaTime;
+            vegetals -= v_rate* Time.deltaTime;
+        }
     }
 }
