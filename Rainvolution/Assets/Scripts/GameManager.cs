@@ -21,8 +21,6 @@ public class GameManager : MonoBehaviour {
 
     private float vegetals_rate;
     private float animals_rate;
-    private float general_life = 1.0f;
-
 
     public Text life_text;
     public Text h2o;

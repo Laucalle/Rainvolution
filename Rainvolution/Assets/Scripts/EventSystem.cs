@@ -15,7 +15,8 @@ public class EventSystem : MonoBehaviour {
     private bool new_special_event = false;
 
     private bool new_update = false;
-    private bool new_planet = false;
+
+    private float waiting_time = 15.0f;
 
     private float time = 0.0f;
 
@@ -52,7 +53,9 @@ public class EventSystem : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        
+
+        Debug.Log(waiting_time);
+
         if (new_event_hurricane)
         {
             time -= Time.deltaTime;
@@ -64,6 +67,7 @@ public class EventSystem : MonoBehaviour {
                 game.O2 -= (game.O2 * 0.6f);
                 new_event_hurricane = false;
                 time = -1.0f;
+                waiting_time = 15.0f;
             }
         }
         else if (new_event_brutal_sun){
@@ -76,6 +80,7 @@ public class EventSystem : MonoBehaviour {
                 game.water -= (game.water * 0.4f);
                 new_event_brutal_sun = false;
                 time = -1.0f;
+                waiting_time = 15.0f;
             }
         }
         else if (new_special_event) {
@@ -89,30 +94,31 @@ public class EventSystem : MonoBehaviour {
                 game.O2 -= (game.O2 * 0.5f);
                 new_special_event = false;
                 time = -1.0f;
+                waiting_time = 15.0f;
             }
         }
         else
         {
-            if (game.O2 > 90.0f && game.O2 <= 100.0f)
+            if ((game.O2 > 90.0f && game.O2 <= 100.0f) && waiting_time <= 0.0f)
             {
                 float value = Random.Range(0.0f, 10.0f);
                 if (value > 8.5f)
                 {
                     console.text = "Hurricane on the way, be careful. Time of arrival: 15 seconds";
                     new_event_hurricane = true;
-                    time = 15.0f;
+                    time = 10.0f;
                 }
             }
-            else if (game.water > 100.0f) {
+            else if ((game.water > 100.0f) && waiting_time <= 0.0f) {
                 float value = Random.Range(0.0f, 10.0f);
                 if (value > 7.5f)
                 {
                     console.text = "The sun shines a lot, a good drought is approaching: 10 seconds";
                     new_event_brutal_sun = true;
-                    time = 10.0f;
+                    time = 6.0f;
                 }
             }
-            else if (game.water > 90.0f && game.water <= 100.0f && game.O2 > 100.0f)
+            else if ((game.water > 90.0f && game.water <= 100.0f && game.O2 > 100.0f) && waiting_time <= 0.0f)
             {
                 float value = Random.Range(0.0f, 10.0f);
                 if (value < 0.5f)
@@ -126,7 +132,17 @@ public class EventSystem : MonoBehaviour {
             
 	}
 
-    public void tuto1 () {
+    void FixedUpdate()
+    {
+        waiting_time -= Time.deltaTime;
+
+        if (waiting_time <= 0.0f) {
+            waiting_time = -1.0f;
+        }
+
+	}
+
+	public void tuto1 () {
         shadow_panel1_2.SetActive(false);
         console.text = "here you have your planet, it is a planet that you will have to make evolve by controlling the amount of water and oxygen it has. To make it rain, you can press on your planet.";
         tutoButton1.SetActive(false);
