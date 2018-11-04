@@ -57,5 +57,5 @@ MonoBehaviour:
   consume_rate: 3
   produce_rate: 1.5
   multiplier: 
-  cost: 24
+  cost: 28
   is_generator: 1

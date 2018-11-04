@@ -5,6 +5,7 @@ using UnityEngine;
 public class EvolveMesh : MonoBehaviour
 {
     public ParticleSystem puff;
+    AudioSource puffSource;
     public GameObject[] planets;
     GameManager game;
     int active_planet = 0;
@@ -12,6 +13,7 @@ public class EvolveMesh : MonoBehaviour
     void Start()
     {
         game = GetComponent<GameManager>();
+        puffSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -23,6 +25,7 @@ public class EvolveMesh : MonoBehaviour
             {
                 planets[active_planet].SetActive(false);
                 puff.Play();
+                puffSource.PlayOneShot(puffSource.clip);
                 planets[1].SetActive(true);
                 active_planet = 1;
 
@@ -35,6 +38,8 @@ public class EvolveMesh : MonoBehaviour
             {
                 planets[active_planet].SetActive(false);
                 puff.Play();
+                puffSource.PlayOneShot(puffSource.clip);
+
                 planets[2].SetActive(true);
                 active_planet = 2;
             }
@@ -45,6 +50,8 @@ public class EvolveMesh : MonoBehaviour
             {
                 planets[active_planet].SetActive(false);
                 puff.Play();
+                puffSource.PlayOneShot(puffSource.clip);
+
                 planets[3].SetActive(true);
                 active_planet = 3;
 
@@ -55,6 +62,8 @@ public class EvolveMesh : MonoBehaviour
             {
                 planets[active_planet].SetActive(false);
                 puff.Play();
+                puffSource.PlayOneShot(puffSource.clip);
+
                 planets[0].SetActive(true);
                 active_planet = 0;
 

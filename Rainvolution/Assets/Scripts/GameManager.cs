@@ -21,14 +21,12 @@ public class GameManager : MonoBehaviour {
 
     private float vegetals_rate;
     private float animals_rate;
-    private float general_life = 1.0f;
 
-
-    public Text life_text;
-    public Text h2o;
-    public Text o2;
-    public Text animals_text;
-    public Text vegetals_text;
+    public Bar life_text;
+    public Bar h2o;
+    public Bar o2;
+    public Bar animals_text;
+    public Bar vegetals_text;
 
 	void Start()
 	{
@@ -76,12 +74,12 @@ public class GameManager : MonoBehaviour {
             water = 120.0f;
 
 
-        life_text.text = "life -> " + life.ToString();
-        h2o.text = "H2O -> " + water.ToString();
-        o2.text = "O2 -> " + O2.ToString();
+        life_text.fillAmount = life;
+        h2o.fillAmount = water;
+        o2.fillAmount = O2;
 
-        animals_text.text = "Animals -> " + animals.ToString();
-        vegetals_text.text = "Vegetals -> " + vegetals.ToString();
+        animals_text.fillAmount = animals;
+        vegetals_text.fillAmount = vegetals;
 
 	}
     public void Rain() {

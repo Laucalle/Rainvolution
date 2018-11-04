@@ -9,7 +9,6 @@ public class GeneratorManager : MonoBehaviour
     public int[] number_of_gen;
 
     private GameManager game;
-    private int counter;
 
     public Text console;
 
@@ -17,7 +16,6 @@ public class GeneratorManager : MonoBehaviour
 	// Use this for initialization
 	void Start () {
         game = gameObject.GetComponent<GameManager>();
-        counter = 1;
 
         for (int i = 0; i < generators.Length; i++) {
             number_of_gen[i] = 0;
