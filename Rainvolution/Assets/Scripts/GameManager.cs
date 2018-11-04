@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour {
     public Bar o2;
     public Bar animals_text;
     public Bar vegetals_text;
+    public GameObject die_panel;
 
 	void Start()
 	{
@@ -36,6 +37,11 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+
+        if (life <= 0) {
+            Time.timeScale = 0.0f;
+            die_panel.SetActive(true);
+        }
 
         if (O2 > 100.0f)
             animals_rate += (0.5f * Time.deltaTime);
