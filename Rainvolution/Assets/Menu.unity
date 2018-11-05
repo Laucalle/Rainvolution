@@ -1383,7 +1383,10 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Created for GDQ One Mechanic Game Jam 5 by:
+  m_Text: 'Created for GDQ One Mechanic Game Jam 5
+
+
+    Thanks for playing.
 
 '
 --- !u!222 &1558250770
